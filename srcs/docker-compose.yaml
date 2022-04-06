@@ -1,0 +1,51 @@
+version: '3'
+services:
+        nginx:
+                restart: unless-stopped
+                build: /home/smhah/Desktop/dir00/srcs/requirements/nginx
+        
+                ports:
+                        - 443:443
+                networks:
+                        - net
+                volumes:
+                        - wordpress_nginx_volume:/var/www/html/wordpress
+
+        wordpress:
+                restart: unless-stopped
+                build: /home/smhah/Desktop/dir00/srcs/requirements/wordpress
+
+                ports:
+                        - 9000:9000
+                networks:
+                        - net
+                volumes:
+                        - wordpress_nginx_volume:/var/www/html/wordpress
+        mariadb:
+                restart: unless-stopped
+                build: /home/smhah/Desktop/dir00/srcs/requirements/mariadb
+
+                ports:
+                        - 3306:3306
+                networks:
+                        - net
+                volumes:
+                       - mariadb_volume:/var/lib/mysql
+                env_file:
+                        - database_info.env
+networks:
+        net:
+volumes:
+        wordpress_nginx_volume:
+                driver_opts:
+                        type: volume
+                        device: /home/smhah/Desktop/dir00/srcs/requirements/wordpress/wordpress
+
+                        o: "bind"
+        mariadb_volume:
+                driver_opts:
+                        type: volume
+                        device: ~/Desktop/dir00/srcs/requirements/mariadb/mariadb_volume
+
+                        o: "bind"
+        
