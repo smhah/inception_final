@@ -3,12 +3,13 @@ NAME		= inception
 all: 		$(NAME)
 
 $(NAME):
-			docker-compose -f srcs/docker-compose.yaml up  --build
+			#bash /home/smhah/Desktop/dir00/srcs/requirements/tools/g_p.sh
+			docker-compose -f srcs/docker-compose.yaml up --build -d
 
 clean:		
-			sh /home/smhah/Desktop/dir00/srcs/requirements/tools/remove_images.sh
+			docker-compose -f srcs/docker-compose.yaml down
 
 fclean:
-			sh /home/smhah/Desktop/dir00/srcs/requirements/tools/kill_all_containers.sh #; sh /home/smhah/Desktop/dir00/srcs/requirements/tools/remove_images.sh
+			docker-compose -f srcs/docker-compose.yaml down; sh /home/smhah/Desktop/dir00/srcs/requirements/tools/remove_images.sh
 
 re:			fclean all

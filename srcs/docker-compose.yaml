@@ -39,13 +39,13 @@ volumes:
         wordpress_nginx_volume:
                 driver_opts:
                         type: volume
-                        device: /home/smhah/Desktop/dir00/srcs/requirements/wordpress/wordpress
+                        device: /home/smhah/data/wordpress
 
                         o: "bind"
         mariadb_volume:
                 driver_opts:
                         type: volume
-                        device: ~/Desktop/dir00/srcs/requirements/mariadb/mariadb_volume
+                        device: /home/smhah/data/mariadb_volume
 
                         o: "bind"
         
