@@ -1,1 +1,1 @@
-sudo chown -R $USER:$USER /home/smhah/Desktop/dir00/srcs/requirements/mariadb/mariadb_volume
+sudo chown -R $USER:$USER /home/smhah/data/mariadb_volume
